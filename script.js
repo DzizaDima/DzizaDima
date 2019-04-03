@@ -132,9 +132,35 @@ function output(){
            var radioOn = radio[i].value;
         }
     }
-    	document.getElementById('table').innerHTML = "<div class="+"col-lg-3 "+ ">" +"Название такси"+ "</div>"+"<div class="+"col-lg-3 "+">" +"Класс машины"+ "</div>"+"<div class="+"col-lg-3"+">" + "Стоимость" + '(грн)' + "</div>"+"<div class="+"col-lg-3"+">" +"Номер"+ "</div>";
-		for (var i = 0; i <taxi.length; i++) {
-					document.getElementById('table').innerHTML += "<div class="+"col-lg-3 "+ ">" + taxi[i].name+ "</div>"+"<div class="+"col-lg-3 "+">" + taxi[i].type[radioOn].name+ "</div>"+"<div class="+"col-lg-3"+">" + Math.round(calcSharaCost()[i][radioOn]) + 'грн' + "</div>"+"<div class="+"col-lg-3"+">" + taxi[i].number+ "</div>";
+    var fillRow = 0;
+for (var i = 0; i < taxi.length; i++) {
+    if (taxi[i].type[radioOn].name != "-") {
+        fillRow+=1;
+    }
+    }
 
-		}
+    var table = document.getElementById('table');
+    table.innerHTML = "";
+    for (var i = 0; i < fillRow+1; i++) {
+        table.innerHTML += "<div class="+"row"+">"+"</div>";
+    }
+    var rows = table.childNodes;
+        rows[0].innerHTML = "<div class="+"cell "+ ">" +"Название такси"+ "</div>"+"<div class="+"cell "+">" +"Класс машины"+ "</div>"+"<div class="+"cell"+">" + "Стоимость" + '(грн)' + "</div>"+"<div class="+"cell"+">" +"Номер"+ "</div>";
+    for (var i = 0; i < rows.length; i++) {
+    
+            rows[i+1].innerHTML ="<div class="+"cell "+ ">" + taxi[i].name+ "</div>"+"<div class="+"cell "+">" + taxi[i].type[radioOn].name+ "</div>"+"<div class="+"cell"+">" + Math.round(calcSharaCost()[i][radioOn]) + 'грн' + "</div>"+"<div class="+"cell"+">" + taxi[i].number+ "</div>";
+           
+    
+    
+        
+           // rows[i].innerHTML ="<div class="+"cell "+ ">" + taxi[i].name+ "</div>"+"<div class="+"cell "+">" + taxi[i].type[radioOn].name+ "</div>"+"<div class="+"cell"+">" + Math.round(calcSharaCost()[i][radioOn]) + 'грн' + "</div>"+"<div class="+"cell"+">" + taxi[i].number+ "</div>";
+                    
+    
+        }
+
+/*for (var i = 0; i < rows.length; i++) {
+   if (rows[i] ) {
+    delete rows[i];
+   }
+}*/
 }
