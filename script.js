@@ -144,7 +144,7 @@ for (var i = 0; i < taxi.length; i++) {
         table.innerHTML += "<div class="+"row"+">"+"</div>";
     }
     var rows = table.childNodes;
-        rows[0].innerHTML = "<div class="+"cell "+ ">" +"Название такси"+ "</div>"+"<div class="+"cell "+">" +"Класс машины"+ "</div>"+"<div class="+"cell"+">" + "Стоимость" + '(грн)' + "</div>"+"<div class="+"cell"+">" +"Номер"+ "</div>";
+        rows[0].innerHTML = "<div class="+"cell "+ ">" +"Название такси"+ "</div>"+"<div class="+"cell "+">" +"Класс машины"+ "</div>"+"<div class="+"cell"+">" + "Стоимость" + ' (грн)' + "</div>"+"<div class="+"cell"+">" +"Номер"+ "</div>";
     for (var i = 0; i <taxi.length; i++) {
         if (calcSharaCost()[i][radioOn]==0){ 
 
