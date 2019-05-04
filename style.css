@@ -1,22 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Neucha');
 
-/*#right-panel {
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
-}
 
-#right-panel select, #right-panel input {
-  font-size: 15px;
-}
-
-#right-panel select {
-  width: 100%;
-}
-
-#right-panel i {
-  font-size: 12px;
-}*/
 .gm-style-mtc > div{
   padding: 0px 10px !important;
 } 
@@ -47,6 +31,7 @@ html, body {
 
 #right-panel>p{
 	border: 1px solid black;
+  /*margin-bottom: 5px;*/
 
 
 }
@@ -93,4 +78,11 @@ label>input{
 label{
   margin-right: 2px;
     margin-left: 2px;
+    min-width: 40%;
+}
+#addservice{
+      background-color: #f3705d;
+}
+#typecar{
+      background-color: #fff863;
 }
