@@ -6,7 +6,7 @@
 } 
 
 .gmnoprint{
-  max-width: 80px;
+  display: none;
 }
 #right-panel{
   width: 100%;
