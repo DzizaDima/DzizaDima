@@ -85,27 +85,36 @@ function computeTotalDistance(result) {
     document.getElementById('total').innerHTML = total;
   
 }
-    data = '[{"name":"Шара (30 - 40)","number":"30 - 40","type":[{"name":"Эконом","firstkmprice":"39","otherkm":"8"},{"name":"Стандарт","firstkmprice":"49","otherkm":"9"},{"name":"Комфорт","firstkmprice":"59","otherkm":"10"},{"name":"Бизнеc","firstkmprice":"69","otherkm":"10"}]},{"name":"Maxim","number":"717-77-77","type":[{"name":"Эконом","firstkmprice":"35","otherkm":"6"},{"name":"-","firstkmprice":"","otherkm":""},{"name":"Комфорт","firstkmprice":"50","otherkm":"6.5"},{"name":"Бизнеc","firstkmprice":"50","otherkm":"7.5"}]},{"name":"OnTaxi","number":"2000","type":[{"name":"Эконом","firstkmprice":"29","otherkm":"6"},{"name":"Стандарт","firstkmprice":"45","otherkm":"7"},{"name":"Комфорт","firstkmprice":"55","otherkm":"8"},{"name":"Бизнеc","firstkmprice":"65","otherkm":"11"}]},{"name":"Shark","number":"30-30","type":[{"name":"Эконом","firstkmprice":"38.25","otherkm":"5.95"},{"name":"Стандарт","firstkmprice":"45","otherkm":"7"},{"name":"Комфорт","firstkmprice":"58.5","otherkm":"9.1"},{"name":"-","firstkmprice":"","otherkm":""}]},{"name":"Яндекс","number":"20-02","type":[{"name":"Эконом","firstkmprice":"29","otherkm":"5"},{"name":"-","firstkmprice":"-","otherkm":"-"},{"name":"Комфорт","firstkmprice":"35","otherkm":"5"},{"name":"-","firstkmprice":"-","otherkm":"-"}]}]';
+    data = '[{"name":"Шара (30 - 40)","number":"30 - 40","type":[{"name":"Эконом","firstkmprice":"25","otherkm":"8"},{"name":"Стандарт","firstkmprice":"49","otherkm":"9"},{"name":"Комфорт","firstkmprice":"59","otherkm":"10"},{"name":"Бизнеc","firstkmprice":"69","otherkm":"10"}],"services":[{"name":"animal","cost":"50"},{"name":"delivery","cost":"10"}]},{"name":"Maxim","number":"75 - 55","type":[{"name":"Эконом","firstkmprice":"35","otherkm":"6"},{"name":"Стандарт","firstkmprice":"-","otherkm":"-"},{"name":"Комфорт","firstkmprice":"50","otherkm":"6.5"},{"name":"Бизнеc","firstkmprice":"50","otherkm":"7.5"}],"services":[{"name":"animal","cost":"10"},{"name":"delivery","cost":"10"}]},{"name":"OnTaxi","number":"2000","type":[{"name":"Эконом","firstkmprice":"29","otherkm":"6"},{"name":"Стандарт","firstkmprice":"45","otherkm":"7"},{"name":"Комфорт","firstkmprice":"55","otherkm":"8"},{"name":"Бизнеc","firstkmprice":"65","otherkm":"11"}],"services":[{"name":"animal","cost":"-"},{"name":"delivery","cost":"-"}]},{"name":"Shark","number":"3000","type":[{"name":"Эконом","firstkmprice":"38.25","otherkm":"5.95"},{"name":"Стандарт","firstkmprice":"45","otherkm":"7"},{"name":"Комфорт","firstkmprice":"58.5","otherkm":"9.1"},{"name":"-","firstkmprice":"-","otherkm":"-"}],"services":[{"name":"animal","cost":"10"},{"name":"delivery","cost":"20"}]},{"name":"Яндекс","number":"20-02","type":[{"name":"Эконом","firstkmprice":"29","otherkm":"5"},{"name":"-","firstkmprice":"-","otherkm":"-"},{"name":"Комфорт","firstkmprice":"35","otherkm":"5"},{"name":"-","firstkmprice":"-","otherkm":"-"}],"services":[{"name":"animal","cost":"-"},{"name":"delivery","cost":"-"}]}]';
 var taxi = JSON.parse(data);
 
 	function calcSharaCost(){
 		var sharaCost=[];
 		var cost = [];
 		var range = Number(total.innerHTML);
+        var serv_inp = document.getElementsByClassName("services");
+       //alert(Number(taxi[0].services[0].cost));
 		for (var j = 0; j < taxi.length; j++) {
 			 cost[j] = [];
 			switch (j){
-				case 0 : case 2 : case 3: case 4:{
+				case 0 : case 2 :  {
 					for(let i = 0; i < taxi[0].type.length; i++ ){
 						if (range > 1){
 							range - 1;
 							cost[j][i] = Number(taxi[j].type[i].firstkmprice);
 							cost[j][i] += range*Number(taxi[j].type[i].otherkm);
-							cost[j][i] -= cost[j][i]/100*5;
-			
+							//cost[j][i] -= cost[j][i]/100*5; 
 						}
 						else {cost[j][i] = taxi[j].type[i].firstkmprice};
-					}
+                        
+                            for (var k = 0; k < serv_inp.length; k++) {
+                                if (serv_inp[k].checked){
+                                cost[j][i] += Number(taxi[j].services[k].cost);
+                                }
+                            }
+                            
+					 
+                    }
 				}
 				break;
 				case 1 : {
@@ -118,11 +127,35 @@ var taxi = JSON.parse(data);
 			
 						}
 						else {cost = taxi[1].type[i].firstkmprice};
+                        for (var k = 0; k < serv_inp.length; k++) {
+                                if (serv_inp[k].checked){
+                                cost[j][i] += Number(taxi[j].services[k].cost);
+                                }
+                            }
 					}
 				}
+                break;
+                case 3: case 4:{
+                    for(let i = 0; i < taxi[0].type.length; i++ ){
+                        if (range > 1){
+                            range - 1;
+                            cost[j][i] = Number(taxi[j].type[i].firstkmprice);
+                            cost[j][i] += range*Number(taxi[j].type[i].otherkm);
+                            cost[j][i] -= cost[j][i]/100*5;
+            
+                        }
+                        else {cost[j][i] = taxi[j].type[i].firstkmprice};
+                    for (var k = 0; k < serv_inp.length; k++) {
+                                if (serv_inp[k].checked){
+                                cost[j][i] += Number(taxi[j].services[k].cost);
+                                }
+                            }
+                    }
+                }
 			}
 			
-		}		
+		}
+       
 		return cost;
 	}
 function output(){

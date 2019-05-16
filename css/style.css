@@ -50,6 +50,7 @@ html, body {
   max-width: 40% !important;
   margin-right: 5%;
   margin: 1%; 
+  left: 2%  !important;
 }
 #inpB{
   max-height: 15%;
