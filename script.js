@@ -7,6 +7,9 @@ function initMap() {
         }
     });
 
+
+
+
     const directionsService = new google.maps.DirectionsService();
     const directionsDisplay = new google.maps.DirectionsRenderer({
         draggable: true,
@@ -18,15 +21,61 @@ function initMap() {
         computeTotalDistance(directionsDisplay.getDirections());
     });
 
-    let origin = new google.maps.LatLng(49.915410, 36.280274);
-    let destination = new google.maps.LatLng(49.999486, 36.243151);
 
+
+
+  
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, geopos) {
+  infoWindow.setPosition(geopos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+//console.log(geoLat);
+
+   // let origin = new google.maps.LatLng(49.915410, 36.280274);
+    let origin = new google.maps.LatLng(49.968759, 36.269766);
+    let destination = new google.maps.LatLng(49.999486, 36.243151);
+infoWindow = new google.maps.InfoWindow;
+// Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geopos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+    var geoLat = geopos.lat;
+    var geoLng = geopos.lng;
+    var geoposOrigin = new google.maps.LatLng(geopos.lat, geopos.lng);
+      infoWindow.setPosition(geopos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(geopos);
+      displayRoute(
+        geoposOrigin,
+        destination,
+        directionsService,
+        directionsDisplay
+    );
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    }
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
     displayRoute(
         origin,
         destination,
         directionsService,
         directionsDisplay
     );
+  }
+    
 
     const bindInpToMap = (input, name) => {
         const searchBox = new google.maps.places.Autocomplete(input);
@@ -45,6 +94,7 @@ function initMap() {
                 map.setCenter(place.geometry.location);
                 destination = place.geometry.location;
             }
+
             displayRoute(
                  origin,
                  destination,
