@@ -67,15 +67,15 @@ infoWindow = new google.maps.InfoWindow;
     );
   } else {
     // Browser doesn't support Geolocation
+    console.log("ddd");
     handleLocationError(false, infoWindow, map.getCenter());
+  }
     displayRoute(
         origin,
         destination,
         directionsService,
         directionsDisplay
     );
-  }
-    
 
     const bindInpToMap = (input, name) => {
         const searchBox = new google.maps.places.Autocomplete(input);
