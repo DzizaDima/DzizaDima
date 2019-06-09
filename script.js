@@ -30,8 +30,8 @@ function initMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, geopos) {
   infoWindow.setPosition(geopos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+                        'Ошибка: Не удалось определить местоположение. Попробуйте разрешить доступ к информации о вашем местоположении.' :
+                        'Ошибка: Ваш браузер не поддерживает геолокацию');
   infoWindow.open(map);
 }
 
@@ -52,7 +52,7 @@ infoWindow = new google.maps.InfoWindow;
     var geoLng = geopos.lng;
     var geoposOrigin = new google.maps.LatLng(geopos.lat, geopos.lng);
       infoWindow.setPosition(geopos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('Местоположение определено');
       infoWindow.open(map);
       map.setCenter(geopos);
       displayRoute(
@@ -237,5 +237,6 @@ for (var i = 0; i < taxi.length; i++) {
             rows[i+1].innerHTML = "<div class="+"cell "+ ">" + taxi[i].name+ "</div>"+"<div class="+"cell "+">" + taxi[i].type[radioOn].name+ "</div>"+"<div class="+"cell"+">" + calcCost()[i][radioOn] + grn(calcCost()[i][radioOn]) + "</div>"+"<div class="+"cell"+">" + taxi[i].number+ "</div>";
         }
     }
-  
+ 
+ document.getElementById('nav-toggle').checked = false; 
 }

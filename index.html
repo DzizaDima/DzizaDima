@@ -15,32 +15,13 @@
 
       <title>EasyTaxi</title>
   </head>
-   <!-- 
-    Скрытый checkbox, отвечающий за переключение панели, должен быть в верхней части документа, лучше сразу после тега `<body>`
-
-    `id` атрибут предназначен для связки с атрибутом `for` тега <label>
-
-    Атрибут `hidden` указывает состояние «скрытый» у текущего элемента
-    -->
+  
     <input type="checkbox" id="nav-toggle" hidden>
-    <!-- 
-    Выдвижную панель размещаете ниже
-    флажка (checkbox), но не обязательно 
-    непосредственно после него, например
-    можно и в конце страницы
-    -->
+   
     <nav class="nav">
-        <!-- 
-    Метка с именем `id` чекбокса в `for` атрибуте
-    Символ Unicode 'TRIGRAM FOR HEAVEN' (U+2630)
-    Пустой атрибут `onclick` используем для исправления бага в iOS < 6.0
-    См: http://timpietrusky.com/advanced-checkbox-hack 
-    -->
+       
         <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <!-- 
-    Здесь размещаете любую разметку,
-    если это меню, то скорее всего неупорядоченный список <ul>
-    <-->
+       
     
         <h2 class="logo"> 
              <p>Настройки</p>
@@ -53,11 +34,7 @@
         <p>Длинна маршрута: <span id="total"></span> км</p>
       </div>
     </div>
-   <!-- <div class="row right-panel">
-       <div class="col-lg-12 text-center"  id="right-panel">
-        <p>Длинна маршрута: <span id="total"></span> км</p>
-      </div>
-    </div>-->
+  
        <div class="row" id="typecar">
       <div class="col-lg-12 text-center" >
         <p>Выберете класс машины</p>
@@ -77,18 +54,7 @@
       </div>
     </div>
     </nav>
-    <!-- 
-    Маска (затемнение) основного контента при включенной панели
-    по-умолчанию данная фишка не используется, если оно вам надо,
-    просто расккоментируйте div-контейнер ниже
-    
-    <div class="mask-content"></div>
-    -->
-    
-    <!-- 
-    Далее размещаем любую разметку,
-    много слов, картинки и т.д...
-    -->
+   
     <body >
 
 <div class="container-fluid">
@@ -107,45 +73,12 @@
         
     </div>
     <br>
-    <!--<div class="row ">
-       <div class="col-lg-12 text-center"  id="right-panel">
-        <p>Длинна маршрута: <span id="total"></span> км</p>
-      </div>
-    </div>
-    <div class="row" id="typecar">
-      <div class="col-lg-12 text-center" >
-        <p>Выберете класс машины</p>
-      </div>
-      <div class="radio  col-lg-12 text-center">
-        <label><input type="radio" name="typecar" value="0" checked>Эконом</label>
-        <label><input type="radio" name="typecar" value="1">Стандарт</label>
-        <label><input type="radio" name="typecar" value="2">Комфорт</label>
-        <label><input type="radio" name="typecar" value="3">Бизнес</label>
-      </div>
-    </div>
-    <div class="row" id="addservice">
-      <div class="col-lg-12 text-center"><p>Dop Uslugi</p></div>
-      <div class="col-lg-12 text-center">
-        <label><input type="checkbox" name="addservice" value="0">С животным</label>
-        <label><input type="checkbox" name="addservice" value="1">Курьерская доставка</label>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <button class="btn btn-warning" onclick="output()">Показать варианты</button>
-      </div>
-    </div>
-</div>-->
+   
 <a href="#x" class="overlay" id="win1"></a>
    <div class="popup" id="table">
 
-    <!--<a class="close"title="Закрыть" href="#close"></a>-->
     </div>
- <!--    <a href="#win1" class="button button-green">Открыть окно 1</a>
-<div class="container-fluid" >
- 
-</div>-->
+
 
  
        
